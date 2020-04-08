@@ -1,7 +1,7 @@
 # Covid-19 Search Engine
 
 ##### This project aims to help researchers in the fight against Covid-19 by providing relevant articles that match queries written in natural language.
-It is available here:  [Covid-19 Search Engine](https:covid.exact-lab.it "Covid-19 Search Engine").
+It is available here:  [Covid-19 Search Engine](https://covid.exact-lab.it/ "Covid-19 Search Engine").
 
 **Covid-19 Search Engine** is based on BioBERT [1] to search relevant content inside the [CORD-19](https://pages.semanticscholar.org/coronavirus-research) dataset, which  include more than 44,000 scholarly articles about COVID-19, SARS-CoV-2 and related coronaviruses.
 
