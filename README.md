@@ -13,7 +13,7 @@ This project is composed of three docker containers:
 - **`nlp-bert`**,  which contains the BERT model that  encodes queries and create the corpus
 - **`nlp-elasticsearch`**, that store the index of documents and serve them to the Flask app
 
-In a nutshell,  BERT encodes all documents of the corpus based on the abstract. This information together with **Title, Abstract, Authors, DOI** is saved in a index  and than stored in elasticsearch.
+In a nutshell,  BERT encodes all documents of the corpus based on the abstract. This information together with **Title, Abstract, Authors, DOI** are saved in a index  and than stored in elasticsearch.
 Users queries are encoded on the fly by BERT and then confronted with the stored embeddings from the index.
 For more information on how these components work together, please see the references.[2]
 
