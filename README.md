@@ -138,4 +138,5 @@ Special thanks for the work of Hironsan, ([Github](https://github.com/Hironsan/b
 
 ## References
 [1] Lee et al. 2020, ["BioBERT: a pre-trained biomedical language representation model for biomedical text mining"](http://doi.org/10.1093/bioinformatics/btz682)
-[2] Elasticsearch meets BERT: Building Search Engine with Elasticsearch and BERT https://towardsdatascience.com/elasticsearch-meets-bert-building-search-engine-with-elasticsearch-and-bert-9e74bf5b4cf2
+
+[2]Elasticsearch meets BERT: Building Search Engine with Elasticsearch and BERT https://towardsdatascience.com/elasticsearch-meets-bert-building-search-engine-with-elasticsearch-and-bert-9e74bf5b4cf2
