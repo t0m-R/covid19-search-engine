@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+  <div id="app" max-width="100%" max-height="95%">
+
+    <v-app>
+    <v-container fluid>
+      <v-app-bar app color="blue darken-4" dark class="flex-grow-1">
+        <v-col cols="1">
+        </v-col>
+        <v-col cols="3">
+          <v-toolbar-title>
+            <span class="headline flex font-weight-medium">Covid-19 Search Engine</span>
+          </v-toolbar-title>
+        </v-col>
+        <v-col cols="7">
+          <v-text-field v-model="query" v-on:keyup.enter="submit" flat solo-inverted hide-details
+            prepend-inner-icon="search" label="Search" class="flex"></v-text-field>
+        </v-col>
+        <v-col cols="1">
+        </v-col>
+        <div class="flex-grow-1"></div>
+      </v-app-bar>
+    </v-container>
+
+      <v-content>
+        <v-row class="xl-0">
+
+          <v-col cols = "4">
+            <div style="position:fixed;top:10%;right:68%;left:2%;">
+            <v-card eager elevation="5" class="m4" style="overflow-y: scroll" height="75vh" >
+            <v-container fluid>
+            <v-card-title class="headline font-weight-bold pr-4">
+              Welcome to Covid-19 Search Engine!
+              </v-card-title>
+              <v-card-text  class="subtitle-2 font-weight-light text-start pr-4">
+                <p>
+              <p style="font-size:1.2rem;"> This project aims to help researchers in the fight against Covid-19 by providing relevant articles that match queries written in natural language.</p>
+                Good examples are:
+                <ul>
+                  <li><v-card-text class="caption" style="cursor:pointer;" v-on:click="example('Is there are any study about Nuclear Magnetic Resonance Structure of the Nucleic Acid-Binding Domain of COVID-19?')">Is there are any study about Nuclear Magnetic Resonance Structure of the Nucleic Acid-Binding Domain of COVID-19?
+                  </v-card-text>
+                  </li>
+                  <li><v-card-text class="caption" style="cursor:pointer;" v-on:click="example('Why in Covid-19 infection The lymphocyte decrease in contrast with other viral infection?')">Why in Covid-19 infection The lymphocyte decrease in contrast with other viral infection?
+                    <v-card-text>
+                    </li>
+                </ul>
+                <small>Source: <a target="_blank" href="https://www.researchgate.net/community/COVID-19/discussions"> Researchgate </a></small>
+              </p>
+              <v-divider class="py-2"></v-divider>
+              <h3>About</h3>
+              <p>
+              Our search engine use Natural Language Processing techniques to extrapolate the context of the question and provide accurate answer even when actual words differ.
+              It is based on the abstract of these articles, so we reccomend to have a look at the abstract even if the title seems off at first glance.
+             </p>
+             <v-divider class="py-2"></v-divider>
+             <h3>Credits</h3>
+             <p>
+               This project is open source and it's source code can be found on <a href="https://github.com/t0m-R/covid19-search-engine" target="_blank">Github</a>.
+             </br>
+             </br>
+            The dataset used is the CORD-19, it can be found <a href="https://pages.semanticscholar.org/coronavirus-research" target="_blank">here</a>.
+
+              </v-card-text>
+              <v-container fluid>
+                <v-row>
+                  <v-col cols="6" sm="4">
+                    </v-col>
+                  <v-col cols="6" sm="4">
+                  </v-col>
+                </v-container>
+              </v-container>
+            </v-card>
+          </div>
+            </v-col>
+
+          <v-col cols="7">
+            <template  v-if="'hits' in result">
+              <v-card  v-for="(item, index) in result.hits.hits" :key="index" max-width="100%" flat tile class="flex pb-4">
+                <v-card-title class="headline font-weight-bold">[[ item._source.title ]]</v-card-title>
+                <v-card-subtitle class="caption font-weight-light">[[ item._source.authors.slice(0, 200) ]][..]</v-card-subtitle>
+                <v-card-text class="subtitle-1 pb-2">[[ item._source.abstract.slice(0, 1000) ]][..]<v-card-text tile flat class="caption"> <a :href="item._source.doi" target="_blank">[[ item._source.doi ]]</a></v-card-text></v-card-text>
+                <p></p>
+              </v-card>
+            </template>
+          </v-col>
+
+          <v-col cols="1">
+            </v-col>
+          </v-row>
+        </v-content>
+
+      <v-footer fixed dark color="blue darken-4">
+        <v-container fluid>
+                <v-row class="sm-0">
+                </v-row class="sm-0">
+        </v-container>
+      </v-footer>
+    </v-app>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+    const base_url = window.location.href;
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      delimiters: ['[[', ']]'],
+      data: {
+        query: '',
+        result: []
+      },
+      created() {
+        this.query = ''
+        this.search()
+      },
+      methods: {
+        search() {
+          axios.get(`${base_url}search?q=${this.query}`).then(response => {
+            this.result = response.data;
+          })
+        },
+        submit() {
+          if (this.query == '') {
+            this.result = [];
+            return;
+          }
+          this.search()
+        },
+        example: function(text) {
+          this.query = text
+          this.search()
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>
