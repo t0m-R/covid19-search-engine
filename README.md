@@ -109,7 +109,7 @@ export BASE_DIR="$(cd .. ; pwd -P )"
 export PATH_MODEL="$BASE_DIR/models/biobert_v1.1_pubmed"
 export INDEX_NAME="covid19_04-03"
 ```
-Download the precompiled index file for the example above under releases and put it inside the data folder:
+Download the precompiled index file for the example above under [releases](https://github.com/t0m-R/covid19-search-engine/releases) and put it inside the data folder:
 
 ![data](img/data.png)
 
