@@ -5,6 +5,8 @@ It is available here:  [Covid-19 Search Engine](https://covid.exact-lab.it/ "Cov
 
 **Covid-19 Search Engine** is based on BioBERT [1] to search relevant content inside the [CORD-19](https://pages.semanticscholar.org/coronavirus-research) dataset, which  include more than 44,000 scholarly articles about COVID-19, SARS-CoV-2 and related coronaviruses.
 
+> ⚠️ This project development is now halted as we are planning to release a new version together with another team at [covid-papers-browser](https://github.com/gsarti/covid-papers-browser). 
+We will continue to release csv and index files with the new updates from the CORD-19 dataset.
 
 This project is composed of three docker containers:
 
