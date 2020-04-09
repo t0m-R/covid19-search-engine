@@ -134,6 +134,8 @@ It needs the name of the json config file for the index, found in **data/**, it 
 
 
 ### Credits
+We would like to express our gratitude towards  [eXact Lab](https://www.exact-lab.it/), that gave us the possibility to host our website for free.
+
 Special thanks for the work of Hironsan, ([Github](https://github.com/Hironsan/bertsearch))  that gave us the idea to build this service.
 
 ## References
