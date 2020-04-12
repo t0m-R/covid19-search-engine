@@ -13,6 +13,9 @@ This project is composed of three docker containers:
 - **`nlp-web`**, the frontend Flask application to be used by users
 
 - **`nlp-bert`**,  which contains the BERT model that  encodes queries and create the corpus
+
+- **`nginx`**, that contains the BERT dashboard
+
 - **`nlp-elasticsearch`**, that store the index of documents and serve them to the Flask app
 
 In a nutshell,  BERT encodes all documents of the corpus based on the abstract. This information together with **Title, Abstract, Authors, DOI** are saved in a index  and than stored in elasticsearch.
@@ -118,7 +121,7 @@ Download the precompiled index file for the example above under [releases](https
 ### Load corpus into elasticsearch
 Run **index_documents.py** to load the documents into elasticsearch:
 ```
-python py/index_documents.py --index_name=covid19_04-03
+python py/index_documents.py --index_name=covid19_04-10
 ```
 Now everything should work and the website should return queries to the user.
 
