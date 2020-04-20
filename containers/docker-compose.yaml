@@ -33,7 +33,7 @@ services:
 
   nlp-bert:
     build: ./nlp-bert
-    runtime: nvidia
+#    runtime: nvidia
     environment:
     ports:
       - "8001:8001"
@@ -41,7 +41,7 @@ services:
       - "5556:5556"
     environment:
       - PATH_MODEL=${PATH_MODEL}
-      - NVIDIA_VISIBLE_DEVICES=all
+#      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - "${PATH_MODEL}:/model"
 
